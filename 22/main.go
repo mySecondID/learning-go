@@ -47,6 +47,7 @@ func getAllCourses(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("hi in all")
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(courses)
+
 }
 
 func fetchOneCourse(w http.ResponseWriter, r *http.Request) {
