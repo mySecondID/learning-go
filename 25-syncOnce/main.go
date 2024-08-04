@@ -4,10 +4,12 @@ import (
 	"fmt"
 	"sync"
 	"sync/atomic"
+	"time"
 )
 
 func main() {
 	var wg sync.WaitGroup
+	var startTime = time.Now()
 	// var mutexLock sync.Mutex
 
 	var counter int32 = 0
@@ -22,7 +24,8 @@ func main() {
 		}()
 	}
 	wg.Wait()
-	fmt.Printf("%d\n", counter)
+	fmt.Printf("time : %d\n", time.Since(startTime))
+	fmt.Printf("%d\n", atomic.LoadInt32(&counter))
 }
 
 // go run -race main.go
